@@ -39,9 +39,9 @@ batch_size = 100 # 배치 크기
 accuracy_cnt = 0
 
 for i in range(0, len(x), batch_size):
-    x_batch = x[i:i+batch_size]
-    y_batch = predict(network, x_batch)
-    p = np.argmax(y_batch, axis=1)
-    accuracy_cnt += np.sum(p == t[i:i+batch_size])
+    x_batch = x[i:i+batch_size] #입력데이터를 묶는다. # x[0:100], x[100:200],...
+    y_batch = predict(network, x_batch) 
+    p = np.argmax(y_batch, axis=1) #(100,10)의 배열 중에서 1번째 차원을 구성하는 각 원소에서 최댓값 인덱스를 반환하도록 한다.
+    accuracy_cnt += np.sum(p == t[i:i+batch_size]) #bool배열을 만들고 True의 개수를 센다.
 
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))

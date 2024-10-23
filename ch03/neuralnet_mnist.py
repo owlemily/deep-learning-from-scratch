@@ -31,10 +31,10 @@ def predict(network, x):
 
     return y
 
-
+# 추론 수행 시작
 x, t = get_data()
-network = init_network()
-accuracy_cnt = 0
+network = init_network() #학습된 가중치 매개변수를 읽는다.
+accuracy_cnt = 0 #맞힌 숫자의 개수 세기
 for i in range(len(x)):
     y = predict(network, x[i])
     p= np.argmax(y) # 확률이 가장 높은 원소의 인덱스를 얻는다.
